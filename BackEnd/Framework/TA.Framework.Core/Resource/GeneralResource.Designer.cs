@@ -86,5 +86,50 @@ namespace TA.Framework.Core.Resource {
                 return ResourceManager.GetString("General_Updated", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data has been deleted.
+        /// </summary>
+        public static string Info_Deleted {
+            get {
+                return ResourceManager.GetString("Info_Deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data has been saved.
+        /// </summary>
+        public static string Info_Saved {
+            get {
+                return ResourceManager.GetString("Info_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item that you try to delete cannot be found.
+        /// </summary>
+        public static string Item_DeleteNotFound {
+            get {
+                return ResourceManager.GetString("Item_DeleteNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item that you try to find cannot be found.
+        /// </summary>
+        public static string Item_NotFound {
+            get {
+                return ResourceManager.GetString("Item_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item that you try to modify cannot be found.
+        /// </summary>
+        public static string Item_UpdateNotFound {
+            get {
+                return ResourceManager.GetString("Item_UpdateNotFound", resourceCulture);
+            }
+        }
     }
 }

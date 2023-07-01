@@ -126,4 +126,19 @@
   <data name="General_Updated" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="Info_Deleted" xml:space="preserve">
+    <value>Data has been deleted</value>
+  </data>
+  <data name="Info_Saved" xml:space="preserve">
+    <value>Data has been saved</value>
+  </data>
+  <data name="Item_DeleteNotFound" xml:space="preserve">
+    <value>Item that you try to delete cannot be found</value>
+  </data>
+  <data name="Item_NotFound" xml:space="preserve">
+    <value>Item that you try to find cannot be found</value>
+  </data>
+  <data name="Item_UpdateNotFound" xml:space="preserve">
+    <value>Item that you try to modify cannot be found</value>
+  </data>
 </root>
