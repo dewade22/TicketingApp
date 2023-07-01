@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\July2023\Script0001 - create tabel com_Roles.sql" />
+    <None Remove="Scripts\July2023\Script0002 - create tabel com_UserAccount.sql" />
+    <None Remove="Scripts\July2023\Script0003 - create tabel com_UserInRole.sql" />
+    <None Remove="Scripts\July2023\Script0004 - insert data to table com_Roles.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\July2023\Script0004 - insert data to table com_Roles.sql" />
+    <EmbeddedResource Include="Scripts\July2023\Script0003 - create tabel com_UserInRole.sql" />
+    <EmbeddedResource Include="Scripts\July2023\Script0002 - create tabel com_UserAccount.sql" />
+    <EmbeddedResource Include="Scripts\July2023\Script0001 - create tabel com_Roles.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DbArtifacts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="dbup-core" Version="5.0.10" />
+    <PackageReference Include="dbup-sqlserver" Version="5.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="dbup.appsetting.development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="dbup.appsetting.local.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
