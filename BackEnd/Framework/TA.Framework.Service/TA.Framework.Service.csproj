@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TA.Framework.Dto\TA.Framework.Dto.csproj" />
+    <ProjectReference Include="..\TA.Framework.RepositoryInterface\TA.Framework.RepositoryInterface.csproj" />
+    <ProjectReference Include="..\TA.Framework.ServiceInterface\TA.Framework.ServiceInterface.csproj" />
+  </ItemGroup>
+
 </Project>

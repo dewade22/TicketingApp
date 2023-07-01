@@ -13,15 +13,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAccount", "DataAccess\U
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{93EFC578-550C-4E46-AABE-6D7D87724B2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Framework.Application", "Framework\TA.Framework.Application\TA.Framework.Application.csproj", "{C55CE618-1058-43BC-9AAB-5C53950CD9F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Framework.Application", "Framework\TA.Framework.Application\TA.Framework.Application.csproj", "{C55CE618-1058-43BC-9AAB-5C53950CD9F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Framework.Core", "Framework\TA.Framework.Core\TA.Framework.Core.csproj", "{C6C513E1-B8E9-4F2C-B882-D8508622C19C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Framework.Core", "Framework\TA.Framework.Core\TA.Framework.Core.csproj", "{C6C513E1-B8E9-4F2C-B882-D8508622C19C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Framework.Dto", "Framework\TA.Framework.Dto\TA.Framework.Dto.csproj", "{B8146A08-BB49-4780-879D-52AD2B1FB516}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Framework.Dto", "Framework\TA.Framework.Dto\TA.Framework.Dto.csproj", "{B8146A08-BB49-4780-879D-52AD2B1FB516}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Framework.ServiceInterface", "Framework\TA.Framework.ServiceInterface\TA.Framework.ServiceInterface.csproj", "{049EB8B7-49D6-4EF7-8B88-FDC4618CB453}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Framework.ServiceInterface", "Framework\TA.Framework.ServiceInterface\TA.Framework.ServiceInterface.csproj", "{049EB8B7-49D6-4EF7-8B88-FDC4618CB453}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Framework.Service", "Framework\TA.Framework.Service\TA.Framework.Service.csproj", "{6745B6E8-517D-4012-A70E-B4C930CAB44D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TA.Framework.Service", "Framework\TA.Framework.Service\TA.Framework.Service.csproj", "{6745B6E8-517D-4012-A70E-B4C930CAB44D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Framework.RepositoryInterface", "Framework\TA.Framework.RepositoryInterface\TA.Framework.RepositoryInterface.csproj", "{4092E051-C304-4C38-BB61-4FFEECFC8E06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TA.Framework.Repository", "Framework\TA.Framework.Repository\TA.Framework.Repository.csproj", "{EE816858-09F0-44EB-B286-431D8586CEE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{6745B6E8-517D-4012-A70E-B4C930CAB44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6745B6E8-517D-4012-A70E-B4C930CAB44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6745B6E8-517D-4012-A70E-B4C930CAB44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4092E051-C304-4C38-BB61-4FFEECFC8E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4092E051-C304-4C38-BB61-4FFEECFC8E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4092E051-C304-4C38-BB61-4FFEECFC8E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4092E051-C304-4C38-BB61-4FFEECFC8E06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE816858-09F0-44EB-B286-431D8586CEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE816858-09F0-44EB-B286-431D8586CEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE816858-09F0-44EB-B286-431D8586CEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE816858-09F0-44EB-B286-431D8586CEE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +81,8 @@ Global
 		{B8146A08-BB49-4780-879D-52AD2B1FB516} = {93EFC578-550C-4E46-AABE-6D7D87724B2C}
 		{049EB8B7-49D6-4EF7-8B88-FDC4618CB453} = {93EFC578-550C-4E46-AABE-6D7D87724B2C}
 		{6745B6E8-517D-4012-A70E-B4C930CAB44D} = {93EFC578-550C-4E46-AABE-6D7D87724B2C}
+		{4092E051-C304-4C38-BB61-4FFEECFC8E06} = {93EFC578-550C-4E46-AABE-6D7D87724B2C}
+		{EE816858-09F0-44EB-B286-431D8586CEE0} = {93EFC578-550C-4E46-AABE-6D7D87724B2C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C95DC2E-D64F-468F-92E6-EA8B29EFC435}
