@@ -12,9 +12,11 @@
     <None Remove="Scripts\July2023\Script0002 - create tabel com_UserAccount.sql" />
     <None Remove="Scripts\July2023\Script0003 - create tabel com_UserInRole.sql" />
     <None Remove="Scripts\July2023\Script0004 - insert data to table com_Roles.sql" />
+    <None Remove="Scripts\July2023\Script0005 - create tabel com_UserMembership.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\July2023\Script0005 - create tabel com_UserMembership.sql" />
     <EmbeddedResource Include="Scripts\July2023\Script0004 - insert data to table com_Roles.sql" />
     <EmbeddedResource Include="Scripts\July2023\Script0003 - create tabel com_UserInRole.sql" />
     <EmbeddedResource Include="Scripts\July2023\Script0002 - create tabel com_UserAccount.sql" />
