@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;
@@ -8,6 +9,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.ObjectModel;
 using TA.Framework.Application.Infrastructure.ApiVersioning;
 using TA.Framework.Application.Model;
+using TA.Framework.Authorization.Scope;
 using TA.UserAccount.Infrastructure.Swagger;
 
 namespace TA.UserAccount
@@ -65,9 +67,19 @@ namespace TA.UserAccount
                 });
             });
 
-            // Add Authorization Here
+            // Add Authentication Schema Here
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            });
 
-            // Add Bootstrapper Here
+            // Add Authorization service Here
+
+            services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+
+            Bootstrapper.SetupRepositories(services);
+            Bootstrapper.SetupServices(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)

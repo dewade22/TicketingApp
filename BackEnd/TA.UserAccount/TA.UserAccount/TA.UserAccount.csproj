@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -27,12 +27,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Framework\TA.Framework.Application\TA.Framework.Application.csproj" />
+    <ProjectReference Include="..\..\Framework\TA.Framework.Authorization\TA.Framework.Authorization.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="DataAccess\Application\" />
-    <Folder Include="Dto\" />
     <Folder Include="Model\" />
     <Folder Include="ServiceInterface\" />
     <Folder Include="Service\" />
