@@ -1726,6 +1726,19 @@
           "bin/placeholder/TA.Framework.Application.dll": {}
         }
       },
+      "TA.Framework.Authorization/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/TA.Framework.Authorization.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TA.Framework.Authorization.dll": {}
+        }
+      },
       "TA.Framework.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -4813,6 +4826,11 @@
       "path": "../../Framework/TA.Framework.Application/TA.Framework.Application.csproj",
       "msbuildProject": "../../Framework/TA.Framework.Application/TA.Framework.Application.csproj"
     },
+    "TA.Framework.Authorization/1.0.0": {
+      "type": "project",
+      "path": "../../Framework/TA.Framework.Authorization/TA.Framework.Authorization.csproj",
+      "msbuildProject": "../../Framework/TA.Framework.Authorization/TA.Framework.Authorization.csproj"
+    },
     "TA.Framework.Core/1.0.0": {
       "type": "project",
       "path": "../../Framework/TA.Framework.Core/TA.Framework.Core.csproj",
@@ -4840,7 +4858,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.8",
       "Swashbuckle.AspNetCore >= 6.4.0",
-      "TA.Framework.Application >= 1.0.0"
+      "TA.Framework.Application >= 1.0.0",
+      "TA.Framework.Authorization >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4872,6 +4891,9 @@
           "projectReferences": {
             "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Application\\TA.Framework.Application.csproj": {
               "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Application\\TA.Framework.Application.csproj"
+            },
+            "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Authorization\\TA.Framework.Authorization.csproj": {
+              "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Authorization\\TA.Framework.Authorization.csproj"
             }
           }
         }
