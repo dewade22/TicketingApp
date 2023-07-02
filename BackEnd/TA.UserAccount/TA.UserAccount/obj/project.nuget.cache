@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/ppaIlxyenW4R7ZI6V3iy95AX2K937/3vBstnpQW8o8EuqbR84HL2GPF6je2C0+CXFXvClPtBtw12+/PQ5Hmrg==",
+  "dgSpecHash": "4Yt9LBVj5pTmEV15DfyqXydStjh6hv0mPygr6ffdzR7NU+ZO76g6l1wtHt8TFkpx8fadT9Xv9ePjr5erwCWm2Q==",
   "success": true,
   "projectFilePath": "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\TA.UserAccount.csproj",
   "expectedPackageFiles": [
@@ -104,7 +104,19 @@
     "C:\\Users\\dewad\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\dewad\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\dewad\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Users\\dewad\\.nuget\\packages\\system.web.helpers.crypto\\3.2.3\\system.web.helpers.crypto.3.2.3.nupkg.sha512",
     "C:\\Users\\dewad\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Web.Helpers.Crypto 3.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Web.Helpers.Crypto",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

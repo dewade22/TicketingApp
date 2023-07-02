@@ -3,7 +3,7 @@ using TA.Framework.Dto;
 
 namespace TA.UserAccount.Dto
 {
-    public class UserAccountDto : AuditableDto<int>
+    public class UserAccountDto : AuditableDto<string>
     {
         public string EmailAddress { get; set; }
 
@@ -16,5 +16,11 @@ namespace TA.UserAccount.Dto
         public string TimeZoneId { get; set; }
 
         public bool IsArchived { get; set; }
+
+        public string RoleName { get; set; }
+
+        public string Password { get; set; }
+
+        public string RefreshToken { get; set; }
     }
 }

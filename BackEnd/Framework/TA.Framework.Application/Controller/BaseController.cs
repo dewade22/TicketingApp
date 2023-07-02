@@ -75,6 +75,19 @@ namespace TA.Framework.Application.Controller
             return splitAuthorization.Length > 1 ? splitAuthorization[1] : string.Empty;
         }
 
+        protected bool IsValidTimeZone(string timeZoneId)
+        {
+            try
+            {
+                TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+                return true;
+            }
+            catch (TimeZoneNotFoundException)
+            {
+                return false;
+            }
+        }
+
         [NonAction]
         protected virtual JsonResult Json(object data)
         {

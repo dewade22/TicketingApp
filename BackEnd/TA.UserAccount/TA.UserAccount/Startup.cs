@@ -1,15 +1,23 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿#nullable disable
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.ObjectModel;
+using System.Text;
 using TA.Framework.Application.Infrastructure.ApiVersioning;
 using TA.Framework.Application.Model;
+using TA.Framework.Authorization;
 using TA.Framework.Authorization.Scope;
+using TA.Framework.Core.Resource;
+using TA.UserAccount.DataAccess;
+using TA.UserAccount.DataAccess.Application;
 using TA.UserAccount.Infrastructure.Swagger;
 
 namespace TA.UserAccount
@@ -72,11 +80,54 @@ namespace TA.UserAccount
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer("LocalIdentity", options =>
+            {
+                var key = Encoding.UTF8.GetBytes(this.Configuration["JWT:Key"]);
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = this.Configuration["JWT:Issuer"],
+                    ValidAudience = this.Configuration["JWT:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ClockSkew = TimeSpan.Zero
+                };
+
+                options.Events = new JwtBearerEvents
+                {
+                    OnChallenge = context =>
+                    {
+                        context.HandleResponse();
+
+                        if (string.IsNullOrEmpty(context.Error))
+                        {
+                            return this.BuildAuthErrorResponse(context.Response, 401, GeneralResource.General_TokenIsRequired);
+                        }
+
+                        return this.BuildAuthErrorResponse(context.Response, 401, GeneralResource.General_TokenInvalid);
+                    },
+                    OnForbidden = context =>
+                    {
+                        return this.BuildAuthErrorResponse(context.Response, 403, GeneralResource.General_NoAuthorizedAPI);
+                    }
+                };
             });
 
             // Add Authorization service Here
+            services.AddAuthorization(options =>
+            {
+                options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .AddAuthenticationSchemes("LocalIdentity")
+                    .Build();
+            });
 
             services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+            services.Configure<LocalJwtConfig>(this.Configuration.GetSection(LocalJwtConfig.jwt));
+
+            services.AddDbContext<ApplicationContext>(options =>
+                options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+            services.AddAutoMapper(typeof(AutoMapperProfile));
 
             Bootstrapper.SetupRepositories(services);
             Bootstrapper.SetupServices(services);
