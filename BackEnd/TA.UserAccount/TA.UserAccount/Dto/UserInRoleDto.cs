@@ -3,7 +3,7 @@ using TA.Framework.Dto;
 
 namespace TA.UserAccount.Dto
 {
-    public class UserInRoleDto : AuditableDto<int>
+    public class UserInRoleDto : AuditableDto<string>
     {
         public string UserUuid { get; set; }
 

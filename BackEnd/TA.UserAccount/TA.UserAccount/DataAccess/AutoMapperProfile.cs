@@ -12,6 +12,7 @@ namespace TA.UserAccount.DataAccess
             this.CreateMap<ComUserInRole, UserInRoleDto>().ReverseMap();
             this.CreateMap<ComRole, RolesDto>().ReverseMap();
             this.CreateMap<ComUserMembership, UserMembershipDto>().ReverseMap();
+            this.CreateMap<ComUserRefreshToken, UserRefreshTokenDto>().ReverseMap();
         }
     }
 }

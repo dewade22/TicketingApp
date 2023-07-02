@@ -70,11 +70,47 @@ namespace TA.Framework.Core.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are not authorized to access the API.
+        /// </summary>
+        public static string General_NoAuthorizedAPI {
+            get {
+                return ResourceManager.GetString("General_NoAuthorizedAPI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request invalid.
+        /// </summary>
+        public static string General_RequestInvalid {
+            get {
+                return ResourceManager.GetString("General_RequestInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saved.
         /// </summary>
         public static string General_Saved {
             get {
                 return ResourceManager.GetString("General_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token is invalid.
+        /// </summary>
+        public static string General_TokenInvalid {
+            get {
+                return ResourceManager.GetString("General_TokenInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token is required.
+        /// </summary>
+        public static string General_TokenIsRequired {
+            get {
+                return ResourceManager.GetString("General_TokenIsRequired", resourceCulture);
             }
         }
         
@@ -129,6 +165,15 @@ namespace TA.Framework.Core.Resource {
         public static string Item_UpdateNotFound {
             get {
                 return ResourceManager.GetString("Item_UpdateNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timezone Invalid.
+        /// </summary>
+        public static string Timezone_Invalid {
+            get {
+                return ResourceManager.GetString("Timezone_Invalid", resourceCulture);
             }
         }
     }

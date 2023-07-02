@@ -1,7 +1,7 @@
 ﻿namespace TA.Framework.Dto
 {
 #nullable disable
-    public class ExceptionLogDto : AuditableDto<int>
+    public class ExceptionLogDto : AuditableDto<string>
     {
         public string Type { get; set; }
 

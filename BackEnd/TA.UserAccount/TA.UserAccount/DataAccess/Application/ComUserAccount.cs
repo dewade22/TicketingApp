@@ -28,4 +28,6 @@ public partial class ComUserAccount
     public virtual ICollection<ComUserInRole> ComUserInRoles { get; set; } = new List<ComUserInRole>();
 
     public virtual ICollection<ComUserMembership> ComUserMemberships { get; set; } = new List<ComUserMembership>();
+
+    public virtual ICollection<ComUserRefreshToken> ComUserRefreshTokens { get; set; } = new List<ComUserRefreshToken>();
 }

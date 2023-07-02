@@ -23,21 +23,34 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="System.Web.Helpers.Crypto" Version="3.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Framework\TA.Framework.Application\TA.Framework.Application.csproj" />
     <ProjectReference Include="..\..\Framework\TA.Framework.Authorization\TA.Framework.Authorization.csproj" />
+    <ProjectReference Include="..\..\Framework\TA.Framework.RepositoryInterface\TA.Framework.RepositoryInterface.csproj" />
+    <ProjectReference Include="..\..\Framework\TA.Framework.Repository\TA.Framework.Repository.csproj" />
+    <ProjectReference Include="..\..\Framework\TA.Framework.Service\TA.Framework.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="DataAccess\Application\" />
-    <Folder Include="Model\" />
-    <Folder Include="ServiceInterface\" />
-    <Folder Include="Service\" />
-    <Folder Include="RepositoryInterface\" />
-    <Folder Include="Repository\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Core\Resource\UserAccountResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UserAccountResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Core\Resource\UserAccountResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserAccountResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

@@ -23,6 +23,8 @@ public partial class ApplicationContext : DbContext
 
     public virtual DbSet<ComUserMembership> ComUserMemberships { get; set; }
 
+    public virtual DbSet<ComUserRefreshToken> ComUserRefreshTokens { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<ComRole>(entity =>
@@ -90,6 +92,22 @@ public partial class ApplicationContext : DbContext
             entity.HasOne(d => d.UserUu).WithMany(p => p.ComUserMemberships)
                 .HasForeignKey(d => d.UserUuid)
                 .HasConstraintName("FK_com_UserMembership_To_com_UserAccount");
+        });
+
+        modelBuilder.Entity<ComUserRefreshToken>(entity =>
+        {
+            entity.HasKey(e => e.Uuid).HasName("PK__com_User__BDA103F5DBA5EAA7");
+
+            entity.ToTable("com_UserRefreshToken");
+
+            entity.Property(e => e.Uuid).HasMaxLength(100);
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.UserUuid).HasMaxLength(100);
+
+            entity.HasOne(d => d.UserUu).WithMany(p => p.ComUserRefreshTokens)
+                .HasForeignKey(d => d.UserUuid)
+                .HasConstraintName("FK_com_UserRefreshToken_To_com_UserAccount");
         });
 
         OnModelCreatingPartial(modelBuilder);
