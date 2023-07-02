@@ -1,4 +1,5 @@
-﻿namespace TA.Framework.Core.SystemCode
+﻿#nullable disable
+namespace TA.Framework.Core.SystemCode
 {
     public abstract class SystemStringCodeBase
     {
