@@ -4,14 +4,90 @@
     "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\TA.UserAccount.csproj": {}
   },
   "projects": {
-    "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\TA.UserAccount.csproj": {
+    "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Application\\TA.Framework.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\TA.UserAccount.csproj",
-        "projectName": "TA.UserAccount",
-        "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\TA.UserAccount.csproj",
+        "projectUniqueName": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Application\\TA.Framework.Application.csproj",
+        "projectName": "TA.Framework.Application",
+        "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Application\\TA.Framework.Application.csproj",
         "packagesPath": "C:\\Users\\dewad\\.nuget\\packages\\",
-        "outputPath": "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\obj\\",
+        "outputPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dewad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Dto\\TA.Framework.Dto.csproj": {
+                "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Dto\\TA.Framework.Dto.csproj"
+              },
+              "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.ServiceInterface\\TA.Framework.ServiceInterface.csproj": {
+                "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.ServiceInterface\\TA.Framework.ServiceInterface.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Formatters.Json": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Core\\TA.Framework.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Core\\TA.Framework.Core.csproj",
+        "projectName": "TA.Framework.Core",
+        "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Core\\TA.Framework.Core.csproj",
+        "packagesPath": "C:\\Users\\dewad\\.nuget\\packages\\",
+        "outputPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dewad\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,9 +116,218 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Dto\\TA.Framework.Dto.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Dto\\TA.Framework.Dto.csproj",
+        "projectName": "TA.Framework.Dto",
+        "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Dto\\TA.Framework.Dto.csproj",
+        "packagesPath": "C:\\Users\\dewad\\.nuget\\packages\\",
+        "outputPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Dto\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dewad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.ServiceInterface\\TA.Framework.ServiceInterface.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.ServiceInterface\\TA.Framework.ServiceInterface.csproj",
+        "projectName": "TA.Framework.ServiceInterface",
+        "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.ServiceInterface\\TA.Framework.ServiceInterface.csproj",
+        "packagesPath": "C:\\Users\\dewad\\.nuget\\packages\\",
+        "outputPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.ServiceInterface\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dewad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Core\\TA.Framework.Core.csproj": {
+                "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Core\\TA.Framework.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\TA.UserAccount.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\TA.UserAccount.csproj",
+        "projectName": "TA.UserAccount",
+        "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\TA.UserAccount.csproj",
+        "packagesPath": "C:\\Users\\dewad\\.nuget\\packages\\",
+        "outputPath": "D:\\VS File\\TicketingApp\\BackEnd\\TA.UserAccount\\TA.UserAccount\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dewad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Application\\TA.Framework.Application.csproj": {
+                "projectPath": "D:\\VS File\\TicketingApp\\BackEnd\\Framework\\TA.Framework.Application\\TA.Framework.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
+            "Microsoft.AspNetCore.Mvc.ApiExplorer": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.8, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

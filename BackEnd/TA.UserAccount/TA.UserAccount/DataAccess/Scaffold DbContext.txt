@@ -1,0 +1,1 @@
+﻿dotnet ef dbcontext scaffold "server=.\SQLExpress;user=sa;password=password;database=TicketingUserAccount;encrypt=false;" "Microsoft.EntityFrameworkCore.SqlServer" -t com_Roles -t com_UserAccount -t com_UserInRole -t com_UserMembership -f -o DataAccess/Application -c ApplicationContext
