@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using TA.Framework.Application.Controller;
+using TA.Framework.Application.Model;
 using TA.Framework.Core.Constant;
 using TA.Framework.Core.Resource;
 using TA.Framework.ServiceInterface.Request;
 using TA.UserAccount.Core.Resource;
 using TA.UserAccount.Dto;
 using TA.UserAccount.Helper;
+using TA.UserAccount.Model.Authentication;
 using TA.UserAccount.Model.Request;
 using TA.UserAccount.ServiceInterface;
 
@@ -32,6 +33,7 @@ namespace TA.UserAccount.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/v{version:apiversion}/UserAccount/{emailAddress}")]
         public async Task<IActionResult> ReadUserByEmailAddressAsync([FromRoute][Required] string emailAddress)
         {
@@ -70,7 +72,7 @@ namespace TA.UserAccount.Controllers
                 {
                     Data = new UserAccountDto
                     {
-                        Uuid = string.Format(CoreConstant.UuidFormat, UidTableConstant.UserAccount, Guid.NewGuid().ToString().ToLower()),
+                        Uuid = this.GenerateUuid(UidTableConstant.UserAccount),
                         EmailAddress = model.EmailAddress,
                         FirstName = model.FirstName,
                         LastName = model.LastName,
@@ -93,7 +95,7 @@ namespace TA.UserAccount.Controllers
                 {
                     Data = new UserMembershipDto()
                     {
-                        Uuid = string.Format(CoreConstant.UuidFormat, UidTableConstant.UserMembership, Guid.NewGuid().ToString().ToLower()),
+                        Uuid = this.GenerateUuid(UidTableConstant.UserMembership),
                         UserUuid = createUserRequest.Data.Uuid,
                         Password = hashedPassword,
                     }
@@ -108,10 +110,58 @@ namespace TA.UserAccount.Controllers
                     return this.GetApiError(createUserPasswordResponse.GetMessageErrorTextArray(), (int)HttpStatusCode.BadRequest);
                 }
 
-                return this.Created("/Home/Index", createUserResponse.Data.Uuid);
+                var apiResponse = new BasicApiResponse()
+                {
+                    Uuid = createUserResponse.Data.Uuid,
+                };
+
+                return this.Created("/Home/Index", apiResponse);
             }
 
             return this.GetApiError(new[] { GeneralResource.General_RequestInvalid }, (int)HttpStatusCode.BadRequest);
+        }
+
+        [HttpPost]
+        [Route("/v{version:apiversion}/UserAccount/SignIn")]
+        public async Task<IActionResult> SignIn([FromBody]LoginRequest model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.GetApiError(new[] { GeneralResource.General_RequestInvalid }, (int)HttpStatusCode.BadRequest);
+            }
+
+            var userResponse = await this._userAccountService.ReadUserByEmailAddressAsync(model.Email);
+            if (userResponse.IsError())
+            {
+                return this.GetApiError(new[] { UserAccountResource.User_NotRegistered }, (int)HttpStatusCode.BadRequest);
+            }
+
+            if (userResponse.Data.IsArchived)
+            {
+                return this.GetApiError(new[] { UserAccountResource.User_Archived }, (int)HttpStatusCode.BadRequest);
+            }
+
+            var isPasswordMatch = CryptoHash.Verify(model.Password, userResponse.Data.Password);
+
+            if (!isPasswordMatch)
+            {
+                return this.GetApiError(new[] { UserAccountResource.User_WrongPassword }, (int)HttpStatusCode.BadRequest);
+            }
+
+            var tokenRequest = new TokenRequest()
+            {
+                UserUuid = userResponse.Data.Uuid,
+                EmailAddress = model.Email,
+                Role = userResponse.Data.RoleName ?? string.Empty,
+            };
+            
+            var tokenResponse = this._userAccountService.GenerateToken(tokenRequest);
+            if (tokenResponse.IsError())
+            {
+                return this.GetApiError(tokenResponse.GetMessageErrorTextArray(), (int)HttpStatusCode.BadRequest);
+            }
+
+            return new OkObjectResult(tokenResponse);
         }
     }
 }

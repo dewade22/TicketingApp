@@ -70,6 +70,42 @@ namespace TA.UserAccount.Core.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to generate token.
+        /// </summary>
+        public static string Token_FailedToGenerate {
+            get {
+                return ResourceManager.GetString("Token_FailedToGenerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User has been archived.
+        /// </summary>
+        public static string User_Archived {
+            get {
+                return ResourceManager.GetString("User_Archived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User with email address {0} not registered in the system.
+        /// </summary>
+        public static string User_NotRegistered {
+            get {
+                return ResourceManager.GetString("User_NotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password is invalid.
+        /// </summary>
+        public static string User_WrongPassword {
+            get {
+                return ResourceManager.GetString("User_WrongPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email is empty.
         /// </summary>
         public static string UserAccount_EmptyEmail {

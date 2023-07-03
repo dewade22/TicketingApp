@@ -3,6 +3,6 @@
 #nullable disable
     public class BasicApiResponse
     {
-        public string Id { get; set; }
+        public string Uuid { get; set; }
     }
 }

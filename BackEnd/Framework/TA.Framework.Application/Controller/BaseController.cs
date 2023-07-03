@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using TA.Framework.Application.Model;
+using TA.Framework.Core.Constant;
 using TA.Framework.Dto;
 using TA.Framework.ServiceInterface.Response;
 
@@ -86,6 +87,12 @@ namespace TA.Framework.Application.Controller
             {
                 return false;
             }
+        }
+
+        protected string GenerateUuid(string tableName)
+        {
+            var uuid = Guid.NewGuid().ToString().ToLower();
+            return string.Format(CoreConstant.UuidFormat, tableName, uuid);
         }
 
         [NonAction]

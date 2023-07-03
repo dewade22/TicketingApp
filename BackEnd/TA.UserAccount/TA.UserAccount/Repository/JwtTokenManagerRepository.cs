@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using TA.Framework.Core.Constant;
 using TA.UserAccount.Model.Authentication;
 using TA.UserAccount.Model.Request;
 using TA.UserAccount.RepositoryInterface;
@@ -21,12 +22,12 @@ namespace TA.UserAccount.Repository
 
         public Token GenerateRefreshToken(TokenRequest model)
         {
-            return this.GenerateToken(model);
+            return this.GenerateJwtTokens(model);
         }
 
         public Token GenerateToken(TokenRequest model)
         {
-            return this.GenerateToken(model);
+            return this.GenerateJwtTokens(model);
         }
 
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
@@ -66,9 +67,13 @@ namespace TA.UserAccount.Repository
                     {
                          new Claim(ClaimTypes.Name, model.EmailAddress),
                          new Claim(ClaimTypes.Role, model.Role),
+                         new Claim(ClaimTypes.NameIdentifier, CoreConstant.NameIdentifier),
+                         new Claim(ClaimConstant.Uuid, model.UserUuid),
                          new Claim("scope", "read,write")
                     }),
 
+                    Audience = this._configuration["JWT:Audience"],
+                    Issuer = this._configuration["JWT:Issuer"],
                     Expires = DateTime.UtcNow.AddMinutes(15),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
                 };
