@@ -31,7 +31,7 @@ namespace TA.UserAccount.Repository
             }
 
             var dto = new UserAccountDto();
-            EntityToDto(entity, dto);
+            EntityToDtoWithRelation(entity, dto);
             return dto;
         }
 

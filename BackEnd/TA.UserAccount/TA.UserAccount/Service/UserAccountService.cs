@@ -2,6 +2,8 @@
 using TA.Framework.ServiceInterface.Response;
 using TA.UserAccount.Core.Resource;
 using TA.UserAccount.Dto;
+using TA.UserAccount.Model.Authentication;
+using TA.UserAccount.Model.Request;
 using TA.UserAccount.RepositoryInterface;
 using TA.UserAccount.ServiceInterface;
 
@@ -53,6 +55,23 @@ namespace TA.UserAccount.Service
 
             response.Data = result;
 
+            return response;
+        }
+
+        #endregion
+
+        #region public Sync
+        public GenericResponse<Token>GenerateToken(TokenRequest request)
+        {
+            var response = new GenericResponse<Token>();
+            var tokenResponse = this._jwtTokenManagerRepository.GenerateToken(request);
+            if (string.IsNullOrEmpty(tokenResponse.AccessToken))
+            {
+                response.AddErrorMessage(UserAccountResource.Token_FailedToGenerate);
+                return response;
+            }
+
+            response.Data = tokenResponse;
             return response;
         }
 
