@@ -8,10 +8,20 @@ namespace TA.UserAccount.ServiceInterface
 {
     public interface IUserAccountService : IBaseService<UserAccountDto, string>
     {
+        #region Public Async
+
         Task<GenericResponse<UserAccountDto>> ReadUserByEmailAddressAsync(string emailAddress);
 
         Task<GenericResponse<bool>> IsEmailExistAsync(string emailAddress);
 
+        Task<GenericResponse<UserAccountDto>> ReadUserByRefreshTokenAsync(string refreshToken);
+
+        #endregion
+
+        #region Public Sync
+
         GenericResponse<Token> GenerateToken(TokenRequest request);
+
+        #endregion
     }
 }

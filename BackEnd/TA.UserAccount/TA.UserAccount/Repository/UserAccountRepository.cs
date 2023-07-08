@@ -16,6 +16,7 @@ namespace TA.UserAccount.Repository
         }
 
         #region Public Async
+
         public async Task<UserAccountDto> ReadUserByEmailAddress(string emailAddress)
         {
             var dbSet = this.Context.Set<ComUserAccount>();
@@ -41,6 +42,22 @@ namespace TA.UserAccount.Repository
             var entity = await dbSet.FirstOrDefaultAsync(x => x.EmailAddress == emailAddress);
 
             return entity != null;
+        }
+
+        public async Task<UserAccountDto> ReadUserByRefreshTokenAsync(string refreshToken)
+        {
+            var dbSet = this.Context.Set<ComUserAccount>();
+            var entity = await dbSet
+                .Include(x => x.ComUserRefreshTokens)
+                .FirstOrDefaultAsync(item => item.ComUserRefreshTokens.Any(rt => rt.RefreshToken == refreshToken));
+            if (entity == null)
+            {
+                return null;
+            }
+
+            var dto = new UserAccountDto();
+            EntityToDtoWithRelation(entity, dto);
+            return dto;
         }
 
         #endregion

@@ -8,5 +8,7 @@ namespace TA.UserAccount.RepositoryInterface
         Task<UserAccountDto> ReadUserByEmailAddress(string emailAddress);
 
         Task<bool> IsEmailExistAsync(string emailAddress);
+
+        Task<UserAccountDto> ReadUserByRefreshTokenAsync(string refreshToken);
     }
 }

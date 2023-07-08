@@ -1,6 +1,9 @@
-﻿namespace TA.UserAccount.ServiceInterface
+﻿using TA.Framework.ServiceInterface;
+using TA.UserAccount.Dto;
+
+namespace TA.UserAccount.ServiceInterface
 {
-    public class IUserRefreshTokenService
+    public interface IUserRefreshTokenService : IBaseService<UserRefreshTokenDto, string>
     {
     }
 }

@@ -20,6 +20,7 @@ namespace TA.UserAccount
         {
             services.AddScoped<IUserAccountService, UserAccountService>();
             services.AddScoped<IUserMembershipService, UserMembershipService>();
+            services.AddScoped<IUserRefreshTokenService, UserRefreshTokenService>();
         }
     }
 }
