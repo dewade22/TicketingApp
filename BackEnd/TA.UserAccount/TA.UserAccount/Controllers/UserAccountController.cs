@@ -23,17 +23,20 @@ namespace TA.UserAccount.Controllers
     {
         private readonly IUserAccountService _userAccountService;
         private readonly IUserMembershipService _userMembershipService;
+        private readonly IUserRefreshTokenService _userRefreshTokenService;
 
         public UserAccountController(
             IUserAccountService userAccountService,
-            IUserMembershipService userMembershipService)
+            IUserMembershipService userMembershipService,
+            IUserRefreshTokenService userRefreshTokenService)
         {
             this._userAccountService = userAccountService;
             this._userMembershipService = userMembershipService;
+            _userRefreshTokenService = userRefreshTokenService;
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Policy.AllRoles)]
         [Route("/v{version:apiversion}/UserAccount/{emailAddress}")]
         public async Task<IActionResult> ReadUserByEmailAddressAsync([FromRoute][Required] string emailAddress)
         {
@@ -52,6 +55,7 @@ namespace TA.UserAccount.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy.AdminAndTravelAgent)]
         [Route("/v{version:apiversion}/UserAccount")]
         public async Task<IActionResult> CreateUserAsync([FromBody]CreateUserRequest model)
         {
@@ -148,20 +152,74 @@ namespace TA.UserAccount.Controllers
                 return this.GetApiError(new[] { UserAccountResource.User_WrongPassword }, (int)HttpStatusCode.BadRequest);
             }
 
+            return await this.CreateTokenSignInUser(userResponse.Data);
+        }
+
+        [HttpPost]
+        [Route("/v{version:apiversion}/UserAccount/Refresh")]
+        public async Task<IActionResult> RefreshToken([FromBody]RefreshTokenRequest model)
+        {
+            var refreshTokenResponse = await this._userAccountService.ReadUserByRefreshTokenAsync(model.RefreshToken);
+            if (refreshTokenResponse.IsError())
+            {
+                return this.GetApiError(refreshTokenResponse.GetMessageErrorTextArray(), (int)HttpStatusCode.NotFound);
+            }
+
+            var userResponse = await this._userAccountService.ReadUserByEmailAddressAsync(refreshTokenResponse.Data.EmailAddress);
+            if (userResponse.IsError())
+            {
+                return this.GetApiError(new[] { UserAccountResource.User_NotRegistered }, (int)HttpStatusCode.BadRequest);
+            }
+
+            if (userResponse.Data.IsArchived)
+            {
+                return this.GetApiError(new[] { UserAccountResource.User_Archived }, (int)HttpStatusCode.BadRequest);
+            }
+
+            return await this.CreateTokenSignInUser(userResponse.Data);
+        }
+
+        #region Private method
+
+        private async Task<IActionResult> CreateTokenSignInUser(UserAccountDto userAccount)
+        {
             var tokenRequest = new TokenRequest()
             {
-                UserUuid = userResponse.Data.Uuid,
-                EmailAddress = model.Email,
-                Role = userResponse.Data.RoleName ?? string.Empty,
+                UserUuid = userAccount.Uuid,
+                EmailAddress = userAccount.EmailAddress,
+                Role = userAccount.RoleName ?? string.Empty,
             };
-            
+
             var tokenResponse = this._userAccountService.GenerateToken(tokenRequest);
             if (tokenResponse.IsError())
             {
                 return this.GetApiError(tokenResponse.GetMessageErrorTextArray(), (int)HttpStatusCode.BadRequest);
             }
 
+            var saveRefreshTokenRequest = new GenericRequest<UserRefreshTokenDto>()
+            {
+                Data = new UserRefreshTokenDto()
+                {
+                    Uuid = string.IsNullOrEmpty(userAccount.RefreshToken) ? this.GenerateUuid(UidTableConstant.UserRefreshToken) : userAccount.RefreshToken,
+                    RefreshToken = tokenResponse.Data.RefreshToken,
+                    UserUuid = userAccount.Uuid,
+                }
+            };
+
+            if (!string.IsNullOrEmpty(userAccount.RefreshToken))
+            {
+                this.PopulatedUpdatedFields(saveRefreshTokenRequest.Data);
+                await this._userRefreshTokenService.UpdateAsync(saveRefreshTokenRequest);
+            }
+            else
+            {
+                this.PopulateCreatedFields(saveRefreshTokenRequest.Data);
+                await this._userRefreshTokenService.InsertAsync(saveRefreshTokenRequest);
+            }
+
             return new OkObjectResult(tokenResponse);
         }
+
+        #endregion
     }
 }

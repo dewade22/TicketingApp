@@ -15,6 +15,7 @@ using TA.Framework.Application.Infrastructure.ApiVersioning;
 using TA.Framework.Application.Model;
 using TA.Framework.Authorization;
 using TA.Framework.Authorization.Scope;
+using TA.Framework.Core.Constant;
 using TA.Framework.Core.Resource;
 using TA.UserAccount.DataAccess;
 using TA.UserAccount.DataAccess.Application;
@@ -120,6 +121,32 @@ namespace TA.UserAccount
                     .RequireAuthenticatedUser()
                     .AddAuthenticationSchemes("LocalIdentity")
                     .Build();
+
+                options.AddPolicy(Policy.AllRoles, new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .AddAuthenticationSchemes("LocalIdentity")
+                    .RequireClaim(
+                        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
+                        new List<string>()
+                        {
+                            Policy.Administrator,
+                            Policy.Driver,
+                            Policy.Guest,
+                            Policy.TravelAgent,
+                        })
+                    .Build());
+
+                options.AddPolicy(Policy.AdminAndTravelAgent, new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .AddAuthenticationSchemes("LocalIdentity")
+                    .RequireClaim(
+                        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
+                        new List<string>()
+                        {
+                            Policy.Administrator,
+                            Policy.TravelAgent,
+                        })
+                    .Build());
             });
 
             services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();

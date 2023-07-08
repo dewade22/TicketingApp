@@ -14,20 +14,17 @@ namespace TA.UserAccount.Service
         private readonly IJwtTokenManagerRepository _jwtTokenManagerRepository;
         private readonly IUserInRoleRepository _userInRoleRepository;
         private readonly IUserMembershipRepository _userMembershipRepository;
-        private readonly IUserRefreshTokenRepository _userRefreshTokenRepository;
 
         public UserAccountService(
             IUserAccountRepository repository,
             IJwtTokenManagerRepository jwtTokenManagerRepository,
             IUserInRoleRepository userInRoleRepository,
-            IUserMembershipRepository userMembershipRepository,
-            IUserRefreshTokenRepository userRefreshTokenRepository)
+            IUserMembershipRepository userMembershipRepository)
             : base(repository)
         {
             _jwtTokenManagerRepository = jwtTokenManagerRepository;
             _userInRoleRepository = userInRoleRepository;
             _userMembershipRepository = userMembershipRepository;
-            _userRefreshTokenRepository = userRefreshTokenRepository;
         }
 
         #region Public Async
@@ -52,6 +49,22 @@ namespace TA.UserAccount.Service
         {
             var response = new GenericResponse<bool>();
             var result = await this._repository.IsEmailExistAsync(emailAddress);
+
+            response.Data = result;
+
+            return response;
+        }
+
+        public async Task<GenericResponse<UserAccountDto>> ReadUserByRefreshTokenAsync(string refreshToken)
+        {
+            var response = new GenericResponse<UserAccountDto>();
+
+            var result = await this._repository.ReadUserByRefreshTokenAsync(refreshToken);
+            if (result == null)
+            {
+                response.AddErrorMessage(string.Format(UserAccountResource.UserAccount_RefreshTokenNotFound, refreshToken));
+                return response;
+            }
 
             response.Data = result;
 
