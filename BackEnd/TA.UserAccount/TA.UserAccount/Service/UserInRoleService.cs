@@ -7,22 +7,21 @@ using TA.UserAccount.ServiceInterface;
 
 namespace TA.UserAccount.Service
 {
-    public class UserRefreshTokenService : BaseService<UserRefreshTokenDto, string, IUserRefreshTokenRepository>, IUserRefreshTokenService
+    public class UserInRoleService : BaseService<UserInRoleDto, string, IUserInRoleRepository>, IUserInRoleService
     {
-        public UserRefreshTokenService(IUserRefreshTokenRepository repository)
+        public UserInRoleService(IUserInRoleRepository repository)
             : base(repository)
         {
-
         }
 
-        public async Task<GenericResponse<UserRefreshTokenDto>> ReadByUserUuidAsync(string userUuid)
+        public async Task<GenericResponse<UserInRoleDto>> ReadByUserUuidAsync(string userUuid)
         {
-            var response = new GenericResponse<UserRefreshTokenDto>();
+            var response = new GenericResponse<UserInRoleDto>();
 
             var result = await this._repository.ReadByUserUuidAsync(userUuid);
             if (result == null)
             {
-                response.AddErrorMessage(UserAccountResource.RefreshToken_NotFound);
+                response.AddErrorMessage(UserAccountResource.UserInRole_NotFound);
                 return response;
             }
 

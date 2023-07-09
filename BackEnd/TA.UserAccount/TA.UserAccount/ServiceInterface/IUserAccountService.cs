@@ -1,4 +1,5 @@
 ﻿using TA.Framework.ServiceInterface;
+using TA.Framework.ServiceInterface.Request;
 using TA.Framework.ServiceInterface.Response;
 using TA.UserAccount.Dto;
 using TA.UserAccount.Model.Authentication;

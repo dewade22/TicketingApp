@@ -5,5 +5,6 @@ namespace TA.UserAccount.RepositoryInterface
 {
     public interface IUserInRoleRepository : IBaseRepository<UserInRoleDto>
     {
+        Task<UserInRoleDto> ReadByUserUuidAsync(string userUuid);
     }
 }
