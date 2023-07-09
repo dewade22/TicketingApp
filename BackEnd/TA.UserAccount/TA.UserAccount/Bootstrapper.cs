@@ -14,6 +14,7 @@ namespace TA.UserAccount
             services.AddTransient<IUserMembershipRepository, UserMembershipRepository>();
             services.AddTransient<IUserInRoleRepository, UserInRoleRepository>();
             services.AddTransient<IUserAccountRepository, UserAccountRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
         }
 
         public static void SetupServices(IServiceCollection services)
@@ -21,6 +22,8 @@ namespace TA.UserAccount
             services.AddScoped<IUserAccountService, UserAccountService>();
             services.AddScoped<IUserMembershipService, UserMembershipService>();
             services.AddScoped<IUserRefreshTokenService, UserRefreshTokenService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IUserInRoleService, UserInRoleService>();
         }
     }
 }

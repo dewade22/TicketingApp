@@ -70,6 +70,15 @@ namespace TA.UserAccount.Core.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh token not found.
+        /// </summary>
+        public static string RefreshToken_NotFound {
+            get {
+                return ResourceManager.GetString("RefreshToken_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to generate token.
         /// </summary>
         public static string Token_FailedToGenerate {
@@ -129,6 +138,15 @@ namespace TA.UserAccount.Core.Resource {
         public static string UserEmail_NotFound {
             get {
                 return ResourceManager.GetString("UserEmail_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user not have a role.
+        /// </summary>
+        public static string UserInRole_NotFound {
+            get {
+                return ResourceManager.GetString("UserInRole_NotFound", resourceCulture);
             }
         }
     }

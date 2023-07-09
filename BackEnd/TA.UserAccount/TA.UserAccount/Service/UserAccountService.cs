@@ -12,19 +12,13 @@ namespace TA.UserAccount.Service
     public class UserAccountService : BaseService<UserAccountDto, string, IUserAccountRepository>, IUserAccountService
     {
         private readonly IJwtTokenManagerRepository _jwtTokenManagerRepository;
-        private readonly IUserInRoleRepository _userInRoleRepository;
-        private readonly IUserMembershipRepository _userMembershipRepository;
 
         public UserAccountService(
             IUserAccountRepository repository,
-            IJwtTokenManagerRepository jwtTokenManagerRepository,
-            IUserInRoleRepository userInRoleRepository,
-            IUserMembershipRepository userMembershipRepository)
+            IJwtTokenManagerRepository jwtTokenManagerRepository)
             : base(repository)
         {
             _jwtTokenManagerRepository = jwtTokenManagerRepository;
-            _userInRoleRepository = userInRoleRepository;
-            _userMembershipRepository = userMembershipRepository;
         }
 
         #region Public Async

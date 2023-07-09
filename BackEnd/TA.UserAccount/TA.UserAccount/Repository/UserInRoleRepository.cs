@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using TA.Framework.Repository;
 using TA.UserAccount.DataAccess.Application;
 using TA.UserAccount.Dto;
@@ -12,6 +13,21 @@ namespace TA.UserAccount.Repository
             : base(context, mapper)
         {
 
+        }
+
+        public async Task<UserInRoleDto> ReadByUserUuidAsync(string userUuid)
+        {
+            var dbSet = this.Context.Set<ComUserInRole>();
+            var entity = await dbSet
+                .FirstOrDefaultAsync(item => item.UserUuid == userUuid);
+            if (entity == null)
+            {
+                return null;
+            }
+
+            var dto = new UserInRoleDto();
+            EntityToDto(entity, dto);
+            return dto;
         }
     }
 }

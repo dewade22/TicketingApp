@@ -5,6 +5,6 @@ namespace TA.UserAccount.RepositoryInterface
 {
     public interface IUserRefreshTokenRepository : IBaseRepository<UserRefreshTokenDto>
     {
-
+        Task<UserRefreshTokenDto> ReadByUserUuidAsync(string userUuid);
     }
 }
