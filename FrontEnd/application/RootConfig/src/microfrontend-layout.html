@@ -1,0 +1,11 @@
+<single-spa-router>
+  <route default>
+    <redirect from="/" to="/login"></redirect>
+  </route>
+  <route path="login">
+    <application
+      name="@tapp/authentication"
+      props="emitMulticastMessage"
+      ></application>
+  </route>
+</single-spa-router>
