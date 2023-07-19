@@ -7,8 +7,14 @@ import {
 } from "single-spa-layout";
 import microfrontendLayout from "./microfrontend-layout.html";
 
-const subscriber = new BehaviorSubject("");
-const routes = constructRoutes(microfrontendLayout);
+const pubSubEngine = new BehaviorSubject("");
+const data = {
+  props: {
+    emitMulticastMessage: (message) => pubSubEngine.next(message),
+    subscribeMulticastMessage: (callback) =>pubSubEngine.subscribe(callback)
+  }
+}
+const routes = constructRoutes(microfrontendLayout, data);
 const applications = constructApplications({
   routes,
   loadApp({ name }) {
