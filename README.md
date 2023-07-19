@@ -1,3 +1,3 @@
 # TicketingApp
-Ticketing App With C# Application, this repo is for learning use<br>
-This App using service and repo patern
+Ticketing App With C# Backend and React Js Frontend, this repo is for learning purpose<br>
+This App using service and repo patern for backend
