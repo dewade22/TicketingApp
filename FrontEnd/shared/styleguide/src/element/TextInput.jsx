@@ -62,7 +62,10 @@ const TextInput = ({
 
     return (
         <div className="form-group row allign-items-center">
-            <div className={className ? "" : "col-xl-5 col-md-8"}>
+            <div className={className ? "" : "col-xl-2 col-lg-3 col-md-4"}>
+                <label for={id} className={customLabelClassName ?? ""}>{label}{required ? <span className="text-danger">*</span> : null}</label>
+            </div>
+            <div className={className ? "" : "col-xl-5 col-md-8"} >
                 <input
                     type={type}
                     className={`form-control ${customInputClassName ?? ""}`}
