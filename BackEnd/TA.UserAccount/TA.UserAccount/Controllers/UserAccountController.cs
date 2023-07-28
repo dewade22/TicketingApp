@@ -44,7 +44,7 @@ namespace TA.UserAccount.Controllers
 
         [HttpGet]
         [Authorize(Policy.AllRoles)]
-        [Route("/v{version:apiversion}/UserAccount/{emailAddress}")]
+        [Route("/v{version:apiversion}/user-account/{emailAddress}")]
         public async Task<IActionResult> ReadUserByEmailAddressAsync([FromRoute][Required] string emailAddress)
         {
             if (string.IsNullOrEmpty(emailAddress))
@@ -63,7 +63,7 @@ namespace TA.UserAccount.Controllers
 
         [HttpPost]
         [Authorize(Policy.AdminAndTravelAgent)]
-        [Route("/v{version:apiversion}/UserAccount")]
+        [Route("/v{version:apiversion}/user-account")]
         public async Task<IActionResult> CreateUserAsync([FromBody]CreateUserRequest model)
         {
             if (ModelState.IsValid)
@@ -133,7 +133,7 @@ namespace TA.UserAccount.Controllers
         }
 
         [HttpPost]
-        [Route("/v{version:apiversion}/UserAccount/SignIn")]
+        [Route("/v{version:apiversion}/user-account/signin")]
         public async Task<IActionResult> SignIn([FromBody]LoginRequest model)
         {
             if (!ModelState.IsValid)
@@ -163,7 +163,7 @@ namespace TA.UserAccount.Controllers
         }
 
         [HttpPost]
-        [Route("/v{version:apiversion}/UserAccount/Refresh")]
+        [Route("/v{version:apiversion}/user-account/refresh")]
         public async Task<IActionResult> RefreshToken([FromBody]RefreshTokenRequest model)
         {
             var refreshTokenResponse = await this._userAccountService.ReadUserByRefreshTokenAsync(model.RefreshToken);
@@ -188,7 +188,7 @@ namespace TA.UserAccount.Controllers
 
         [HttpPost]
         [Authorize(Policy.AdminAndTravelAgent)]
-        [Route("/v{version:apiversion}/UserAccount/AssignRole")]
+        [Route("/v{version:apiversion}/user-account/roles")]
         public async Task<IActionResult> AssignUnAssignRole([FromBody] AssignRoleRequest model)
         {
             var userAccountResponse = await this._userAccountService.ReadUserByEmailAddressAsync(model.EmailAddress);
