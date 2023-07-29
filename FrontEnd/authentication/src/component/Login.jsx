@@ -13,6 +13,7 @@ const Login = (props) => {
     const [data, setData] = useState(initialData);
     const [, forceUpdate] = useState();
     const simpleValidator = useRef(new SimpleReactValidator());
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const isValid = () => {
         return simpleValidator.current.allValid()
@@ -26,6 +27,8 @@ const Login = (props) => {
             forceUpdate(1)
             return;
         }
+
+        setIsSubmitting(true);
     }
 
     return (
@@ -56,7 +59,16 @@ const Login = (props) => {
                     <span className="text-danger">
                         {simpleValidator.current.message('password', data.password, 'required')}
                     </span>
-                    <button type="button" onClick={onSubmit}>Login</button>
+                    { isSubmitting ? (
+                        <div className="loading-indicator">
+                            <div className="spinner"></div>
+                        </div>
+                    )
+                    :
+                    (
+                        <button type="button" onClick={onSubmit}>Login</button>
+                    )}
+                    
                 </form>
             </aside>
         </section>
