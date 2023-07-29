@@ -1,2 +1,1 @@
-// Anything exported from this file is importable by other in-browser modules.
-export function publicApiFunction() {}
+export { default as AuthenticationService } from "./services/authentication-service";
