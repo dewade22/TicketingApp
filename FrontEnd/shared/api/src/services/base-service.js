@@ -1,8 +1,11 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { ApiEnvConfig } from "@tapp/shared-config";
 
+const config = new ApiEnvConfig();
 export default class BaseService{
     constructor(baseController, defaultVersion){
+        this.baseApiUrl = config.baseApiUrl;
         this.baseController = baseController;
         this.defaultVersion = defaultVersion ?? "v1";
         this.accessToken = "_app_accessToken";
