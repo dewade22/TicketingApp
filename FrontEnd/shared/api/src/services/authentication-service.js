@@ -13,15 +13,12 @@ export default class AuthenticationService extends BaseService {
         this.baseApiUrl = "http://localhost:5272";
     }
 
-    SignIn(email, password) {
+    SignIn(model, version) {
         let options = { headers: {contentType: "application/json" } };
 
         return this._Post(
             `${this.baseApiUrl}/${version ?? this.defaultVersion}/${this.baseController}/signin`,
-            {
-                email: email,
-                password: password,
-            },
+            model,
             options
         );
     }

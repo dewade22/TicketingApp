@@ -49,6 +49,17 @@ namespace TA.UserAccount
                 setup.SubstituteApiVersionInUrl = true;
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "AllowOrigin",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:9000", "https://localhost:9000")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
+
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
             services.AddSwaggerGen(options =>
@@ -174,6 +185,8 @@ namespace TA.UserAccount
                         options.SwaggerEndpoint($"/api-docs/{description.GroupName}/docs.json", description.GroupName.ToUpperInvariant());
                     }
                 });
+
+                app.UseCors("AllowOrigin");
             }
 
             app.UseExceptionHandler("/error");
