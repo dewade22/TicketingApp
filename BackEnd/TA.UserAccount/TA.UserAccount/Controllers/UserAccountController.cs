@@ -144,7 +144,7 @@ namespace TA.UserAccount.Controllers
             var userResponse = await this._userAccountService.ReadUserByEmailAddressAsync(model.Email);
             if (userResponse.IsError())
             {
-                return this.GetApiError(new[] { UserAccountResource.User_NotRegistered }, (int)HttpStatusCode.BadRequest);
+                return this.GetApiError(new[] { string.Format(UserAccountResource.User_NotRegistered, model.Email) }, (int)HttpStatusCode.BadRequest);
             }
 
             if (userResponse.Data.IsArchived)
