@@ -8,4 +8,19 @@
       props="emitMulticastMessage, subscribeMulticastMessage"
       ></application>
   </route>
+  <route path="admin">
+    <application
+      name="@tapp/authentication"
+      props="emitMulticastMessage, subscribeMulticastMessage"
+    ></application>
+    <route path="administrator">
+      <application
+        name="@tapp/authentication"
+        props="emitMulticastMessage, subscribeMulticastMessage"
+      ></application>
+      <header>
+        <application></application>
+      </header>
+    </route>
+  </route>
 </single-spa-router>
